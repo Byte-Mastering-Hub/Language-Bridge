@@ -1,0 +1,15 @@
+fastapi==0.115.6
+uvicorn==0.34.0
+langdetect==1.0.9
+pydantic==2.10.4
+python-dotenv==1.0.1
+SpeechRecognition==3.11.0
+python-multipart==0.0.20
+
+# ── Facebook/Meta translation model (local inference) ──────────────────────────
+# Required only if you set TRANSLATION_MODEL_PATH in your .env file.
+# Also install PyTorch separately: https://pytorch.org/get-started/locally/
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+transformers>=4.35.0
+sentencepiece>=0.1.99
+sacremoses>=0.0.53

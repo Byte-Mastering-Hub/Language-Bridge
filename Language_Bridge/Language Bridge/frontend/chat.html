@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Bridge ✦ Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-orb">
+        <div class="orb-1"></div>
+        <div class="orb-2"></div>
+        <div class="orb-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+
+    <!-- Chat Container -->
+    <div class="chat-wrapper">
+        <!-- Header -->
+        <header class="chat-header">
+            <div class="header-left">
+                <div class="logo-container">
+                    <i class="fas fa-earth-asia logo-icon-small" aria-hidden="true"></i>
+                    <span class="logo-text">Language Bridge</span>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="control-pill">
+                    <i class="fas fa-globe"></i>
+                    <select class="pill-select" id="user-language">
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="ja">🇯🇵 JA</option>
+                        <option value="ko">🇰🇷 KO</option>
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="de">🇩🇪 DE</option>
+                        <option value="hi">🇮🇳 HI</option>
+                        <option value="ar">🇸🇦 AR</option>
+                        <option value="zh">🇨🇳 ZH</option>
+                    </select>
+                </div>
+
+                <div class="options-menu-wrapper">
+                    <button class="btn-icon" id="options-btn" title="Options">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <div class="options-dropdown" id="options-dropdown">
+                        <!-- User info card -->
+                        <div class="dropdown-user-card">
+                            <div class="dropdown-avatar" id="header-avatar">JD</div>
+                            <div class="dropdown-user-info">
+                                <div class="dropdown-username" id="header-username">John Doe</div>
+                                <div class="dropdown-status"><span class="status-dot-sm"></span>Online</div>
+                            </div>
+                        </div>
+                        <div class="options-divider"></div>
+                        <div class="options-item" id="opt-profile">
+                            <i class="fas fa-user-circle"></i>
+                            <span>My Profile</span>
+                        </div>
+                        <div class="options-item" id="opt-clear-chat">
+                            <i class="fas fa-trash-alt"></i>
+                            <span>Clear Chat</span>
+                        </div>
+                        <div class="options-divider"></div>
+                        <div class="options-item" id="opt-mute">
+                            <i class="fas fa-bell" id="mute-icon"></i>
+                            <span id="mute-label">Mute Notifications</span>
+                        </div>
+                        <div class="options-item" id="opt-appearance">
+                            <i class="fas fa-adjust"></i>
+                            <span>Light Mode</span>
+                        </div>
+                        <div class="options-item" id="opt-help">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Help</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Chat Area -->
+        <div class="chat-main">
+            <!-- Sidebar -->
+            <aside class="chat-sidebar">
+                <div class="wa-sidebar-shell">
+                    <nav class="wa-rail">
+                        <button class="wa-rail-btn active" title="Chats"><i class="fas fa-comment-alt"></i></button>
+                        <div class="wa-rail-spacer"></div>
+                        <button class="wa-rail-btn" id="rail-logout-btn" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+                    </nav>
+
+                    <section class="wa-chat-panel">
+                        <div class="wa-panel-top">
+                            <div class="wa-title-row">
+                                <h2>Chats</h2>
+                                <button class="wa-compose-btn" id="add-contact-btn" title="Add new contact">
+                                    <i class="fas fa-user-plus"></i>
+                                </button>
+                            </div>
+                            <div class="sidebar-search">
+                                <div class="search-container">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" placeholder="Search or start new chat" id="search-contacts">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contacts-list" id="contacts-list">
+                            <div class="contacts-empty" id="contacts-empty">
+                                <i class="fas fa-user-friends"></i>
+                                <p>No contacts yet</p>
+                                <span>Click the pencil icon to add a contact.</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </aside>
+
+            <!-- Messages Area -->
+            <div class="messages-area">
+                <div class="chat-profile">
+                    <div class="profile-left">
+                        <div class="profile-avatar-large" id="profile-avatar">
+                            MK
+                            <span class="status-dot"></span>
+                        </div>
+                        <div class="profile-info profile-info-clickable" id="profile-info-trigger" title="View contact details">
+                            <h3 id="profile-name">No contact selected</h3>
+                            <div class="profile-meta" id="profile-meta">Select a contact from the left panel</div>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <div class="chat-language-control" title="Translate this chat">
+                            <i class="fas fa-language"></i>
+                            <select id="chat-language-select" class="pill-select">
+                                <option value="en">EN</option>
+                                <option value="es">ES</option>
+                                <option value="fr">FR</option>
+                                <option value="ja">JA</option>
+                                <option value="ko">KO</option>
+                                <option value="hi">HI</option>
+                                <option value="ar">AR</option>
+                                <option value="zh">ZH</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="messages-list" id="messages-list">
+                    <!-- Messages will be dynamically added here -->
+                </div>
+
+                <!-- Input Area -->
+                <div class="message-input-area">
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="Type a message..." id="message-input">
+                        <div class="action-buttons">
+                            <input type="file" id="file-upload" hidden multiple>
+                            <button class="btn-icon" id="attach-btn">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                            <button class="btn-icon" id="voice-record-btn">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button class="btn-icon" id="send-message-btn" style="background: var(--gradient-4);">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recording Indicator (Hidden by default) -->
+    <div id="recording-indicator" class="recording-indicator hidden">
+        <div class="recording-pulse"></div>
+        <span class="recording-timer" id="recording-timer">0:00</span>
+        <div class="recording-actions">
+            <button class="btn-icon" id="stop-recording">
+                <i class="fas fa-stop"></i>
+            </button>
+            <button class="btn-icon" id="cancel-recording">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-stack"></div>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profile-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>My Profile</h2>
+                <button class="modal-close" data-close="profile-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="profile-photo-editor">
+                    <div class="profile-avatar-modal" id="modal-avatar">JD</div>
+                    <input type="file" id="profile-photo-input" accept="image/*" hidden>
+                    <button class="modal-btn secondary" id="change-photo-btn">
+                        <i class="fas fa-camera"></i> Change Photo
+                    </button>
+                </div>
+                <div class="profile-field">
+                    <label>Username</label>
+                    <div class="profile-value" id="modal-username">John Doe</div>
+                </div>
+                <div class="profile-field">
+                    <label>Email</label>
+                    <div class="profile-value" id="modal-email">john.doe@mail.com</div>
+                </div>
+                <div class="profile-field">
+                    <label>Default Language</label>
+                    <div class="form-input-wrapper">
+                        <i class="fas fa-globe"></i>
+                        <select id="modal-language-select" class="form-input">
+                            <option value="en">🇬🇧 English</option>
+                            <option value="ja">🇯🇵 Japanese</option>
+                            <option value="ko">🇰🇷 Korean</option>
+                            <option value="es">🇪🇸 Spanish</option>
+                            <option value="fr">🇫🇷 French</option>
+                            <option value="de">🇩🇪 German</option>
+                            <option value="hi">🇮🇳 Hindi</option>
+                            <option value="ar">🇸🇦 Arabic</option>
+                            <option value="zh">🇨🇳 Chinese</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn primary" id="save-profile-btn">
+                        <i class="fas fa-save"></i> Save Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clear Chat Confirm Modal -->
+    <div class="modal-overlay" id="clear-modal">
+        <div class="modal-card small">
+            <div class="modal-header">
+                <h2>Clear Chat</h2>
+                <button class="modal-close" data-close="clear-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="color:var(--light-3);margin-bottom:20px;">Are you sure you want to clear all messages? This cannot be undone.</p>
+                <div class="modal-actions">
+                    <button class="modal-btn secondary" data-close="clear-modal">Cancel</button>
+                    <button class="modal-btn danger" id="confirm-clear">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal-overlay" id="help-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Help &amp; Shortcuts</h2>
+                <button class="modal-close" data-close="help-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="help-item"><kbd>Enter</kbd><span>Send message</span></div>
+                <div class="help-item"><kbd>Click 🎙️</kbd><span>Start voice recording</span></div>
+                <div class="help-item"><kbd>Click 📎</kbd><span>Attach a file</span></div>
+                <div class="help-item"><kbd>Click contact</kbd><span>Switch conversation</span></div>
+                <div class="help-item"><kbd>Search bar</kbd><span>Filter contacts</span></div>
+                <div class="options-divider" style="margin:14px 0;"></div>
+                <p style="color:var(--light-3);font-size:0.8rem;text-align:center;">Language Bridge — Multilingual real-time chat</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Contact Modal -->
+    <div class="modal-overlay" id="add-contact-modal">
+        <div class="modal-card small">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-plus" style="margin-right:8px;color:var(--primary-2);"></i>Add New Contact</h2>
+                <button class="modal-close" data-close="add-contact-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="add-contact-form">
+                    <div class="form-group">
+                        <label class="form-label">Full Name <span style="color:#ff6b6b;">*</span></label>
+                        <div class="form-input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="new-contact-name" class="form-input" placeholder="e.g. Alex Johnson" maxlength="40">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">User ID or Email <span style="color:#ff6b6b;">*</span></label>
+                        <div class="form-input-wrapper">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" id="new-contact-lookup" class="form-input" placeholder="e.g. alexj or alex@mail.com" maxlength="80">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Language</label>
+                        <div class="form-input-wrapper">
+                            <i class="fas fa-globe"></i>
+                            <select id="new-contact-language" class="form-input">
+                                <option value="en">🇬🇧 English</option>
+                                <option value="ja">🇯🇵 Japanese</option>
+                                <option value="ko">🇰🇷 Korean</option>
+                                <option value="es">🇪🇸 Spanish</option>
+                                <option value="fr">🇫🇷 French</option>
+                                <option value="de">🇩🇪 German</option>
+                                <option value="hi">🇮🇳 Hindi</option>
+                                <option value="ar">🇸🇦 Arabic</option>
+                                <option value="zh">🇨🇳 Chinese</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="add-contact-error" class="form-error" style="display:none;"></div>
+                    <div class="modal-actions" style="margin-top:16px;">
+                        <button class="modal-btn secondary" data-close="add-contact-modal">Cancel</button>
+                        <button class="modal-btn primary" id="confirm-add-contact">
+                            <i class="fas fa-plus"></i> Add Contact
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Details Drawer -->
+    <div class="drawer-backdrop" id="contact-drawer-backdrop"></div>
+    <aside class="contact-drawer" id="contact-drawer">
+        <div class="drawer-header">
+            <h3>Contact Details</h3>
+            <button class="btn-icon" id="close-contact-drawer" title="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div class="drawer-avatar" id="drawer-contact-avatar">NA</div>
+            <div class="drawer-name" id="drawer-contact-name">No contact selected</div>
+            <div class="drawer-sub" id="drawer-contact-status">Select a contact to view details</div>
+            <div class="drawer-field">
+                <label>User ID</label>
+                <div id="drawer-contact-username">-</div>
+            </div>
+            <div class="drawer-field">
+                <label>Email</label>
+                <div id="drawer-contact-email">-</div>
+            </div>
+            <div class="drawer-field">
+                <label>Chat Language</label>
+                <div id="drawer-contact-language">-</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Attachment Type Modal -->
+    <div class="modal-overlay" id="attach-modal">
+        <div class="modal-card small">
+            <div class="modal-header">
+                <h2>Send Attachment</h2>
+                <button class="modal-close" data-close="attach-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="attach-type-grid">
+                    <button class="attach-type-btn" data-accept="image/*,video/*">
+                        <i class="fas fa-image"></i>
+                        <span>Photo / Video</span>
+                    </button>
+                    <button class="attach-type-btn" data-accept=".pdf,.doc,.docx,.txt,.xls,.xlsx,.ppt,.pptx,.zip,.rar">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Document</span>
+                    </button>
+                    <button class="attach-type-btn" data-accept="audio/*">
+                        <i class="fas fa-music"></i>
+                        <span>Audio</span>
+                    </button>
+                    <button class="attach-type-btn" data-accept="*/*">
+                        <i class="fas fa-paperclip"></i>
+                        <span>All Files</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script type="module" src="firebase.js"></script>
+    <script src="auth.js"></script>
+    <script src="chat.js"></script>
+    <script src="voice.js"></script>
+    <script src="upload.js"></script>
+</body>
+</html>

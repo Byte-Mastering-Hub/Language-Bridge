@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Bridge ✦ Sign In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-orb">
+        <div class="orb-1"></div>
+        <div class="orb-2"></div>
+        <div class="orb-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+
+    <!-- Login Container -->
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="brand-icon">
+                <i class="fas fa-language"></i>
+            </div>
+            <h1 class="auth-title">Welcome Back</h1>
+            <p class="auth-subtitle">Sign in to continue your conversations</p>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" class="input-field" placeholder="Username or Email" id="login-username" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" class="input-field" placeholder="Password" id="login-password" required>
+                </div>
+
+                <div class="auth-inline-actions">
+                    <button type="button" class="text-link-btn" id="forgot-password-link">Forgot password?</button>
+                </div>
+                
+                <button type="submit" class="btn-primary">
+                    <span>Sign In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            
+            <p class="switch-text">
+                Don't have an account? 
+                <a href="register.html" class="switch-link">Create one</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-stack"></div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script type="module" src="firebase.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
