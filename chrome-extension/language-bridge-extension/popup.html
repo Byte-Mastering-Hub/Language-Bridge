@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Language Bridge</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="popup">
+    <header class="top">
+      <h1>Language Bridge</h1>
+      <p class="subtitle">Paste text, choose one language, and get output in that language.</p>
+    </header>
+
+    <section class="card">
+      <h2>Paste Translator</h2>
+
+      <div class="field-group">
+        <label for="manual-input">Paste text</label>
+        <textarea id="manual-input" rows="4" placeholder="Type or paste any message..."></textarea>
+      </div>
+
+      <div class="field-group">
+        <label for="manual-target">Translate to</label>
+        <select id="manual-target"></select>
+      </div>
+
+      <div class="btn-row">
+        <button id="translate-now" class="primary">Translate</button>
+        <button id="clear-input" class="ghost">Clear</button>
+      </div>
+
+      <p id="status" role="status" aria-live="polite"></p>
+
+      <div class="output-window">
+        <p class="output-title">Output</p>
+        <pre id="single-output" class="output-text">Translation will appear here.</pre>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="feed-top">
+        <h2>Recent Chat Translations</h2>
+        <div class="btn-inline">
+          <button id="refresh-feed" class="ghost small">Refresh</button>
+          <button id="clear-feed" class="ghost small danger">Clear</button>
+        </div>
+      </div>
+      <ul id="feed-list" class="feed-list"></ul>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

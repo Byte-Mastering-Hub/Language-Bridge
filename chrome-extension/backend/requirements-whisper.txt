@@ -1,0 +1,4 @@
+-r requirements.txt
+setuptools>=70.0.0
+wheel>=0.44.0
+openai-whisper==20240930

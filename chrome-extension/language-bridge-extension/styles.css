@@ -1,0 +1,286 @@
+:root {
+  --bg-top: #f3f7ff;
+  --bg-bottom: #eef7f2;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #5b6677;
+  --border: #cfd8e4;
+  --accent: #127d70;
+  --accent-dark: #0d665c;
+  --error: #b42318;
+  --success: #067647;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 360px;
+  max-width: 430px;
+  font-family: "Segoe UI", "Noto Sans", sans-serif;
+  color: var(--text);
+  background: linear-gradient(155deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+}
+
+.popup {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.field-group {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+label,
+.label-hint {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+}
+
+select,
+textarea,
+button,
+pre {
+  width: 100%;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+select,
+textarea {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  padding: 10px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 92px;
+}
+
+button {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.primary:hover {
+  background: var(--accent-dark);
+}
+
+.ghost {
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  color: var(--text);
+}
+
+.ghost:hover {
+  background: #eef2f7;
+}
+
+.danger {
+  color: #9f1239;
+}
+
+.small {
+  font-size: 12px;
+  padding: 7px 9px;
+}
+
+.btn-row {
+  display: grid;
+  grid-template-columns: 1fr 84px;
+  gap: 8px;
+}
+
+.btn-inline {
+  display: flex;
+  gap: 6px;
+}
+
+#status {
+  min-height: 17px;
+  margin: 8px 0 0;
+  font-size: 12px;
+}
+
+#status.error {
+  color: var(--error);
+}
+
+#status.success {
+  color: var(--success);
+}
+
+.pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.pill-item input {
+  width: auto;
+  margin: 0;
+}
+
+.output-window {
+  margin-top: 10px;
+  border: 1px solid #dbe3ee;
+  border-radius: 10px;
+  background: #f9fbff;
+  padding: 8px;
+}
+
+.output-title {
+  margin: 0 0 5px;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.output-text {
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #223046;
+  white-space: pre-wrap;
+  min-height: 48px;
+}
+
+.result-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.result-card {
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+  padding: 8px;
+  background: #fbfcff;
+}
+
+.result-meta {
+  margin: 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.result-text {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.feed-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.feed-top h2 {
+  margin: 0;
+}
+
+.feed-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 220px;
+  overflow: auto;
+  display: grid;
+  gap: 8px;
+}
+
+.feed-item {
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+  padding: 8px;
+  background: #fafcff;
+}
+
+.feed-meta,
+.feed-source,
+.feed-translation,
+.feed-empty {
+  margin: 0;
+}
+
+.feed-meta {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.feed-source {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #2f3b4b;
+}
+
+.feed-translation {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #475569;
+}
+
+.feed-empty {
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  background: #fff;
+}
